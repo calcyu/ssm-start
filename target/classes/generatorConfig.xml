@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry  location="E:\Maven\repository\com\oracle\ojdbc14\10.2.0.4.0\ojdbc14-10.2.0.4.0.jar"/>
+    <context id="test" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
+            <!-- 如果生成日期，会造成即使修改一个字段，整个实体类所有属性都会发生变化，不利于版本控制，所以设置为true -->
+            <property name="suppressDate" value="true" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@localhost:1521:xe" userId="hotel" password="hotel">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <!-- 强制使用 java.math.BigDecimal 类 -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.seecen.ssm.hotel.entity"
+                            targetProject="code">
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="resources.mapper"
+                         targetProject="code">
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.seecen.ssm.hotel.dao"
+                             targetProject="code">
+        </javaClientGenerator>
+        <!-- 要生成哪些表 -->
+        <!--<table schema="hotel" tableName="emp" domainObjectName="Emp">-->
+            <!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+        <!--</table>-->
+        <!--<table schema="hotel" tableName="dept" domainObjectName="Dept">-->
+            <!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+        <!--</table>-->
+        <table schema="hotel" tableName="T_dinner_table" domainObjectName="DinnerTable">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table schema="hotel" tableName="T_orders" domainObjectName="Order">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table schema="hotel" tableName="T_order_detail" domainObjectName="OrderDetail">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
